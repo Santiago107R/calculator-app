@@ -1,12 +1,14 @@
 # React-Native
 
-1. Install dependencies
+1. Clonar repositorio
+
+2. Install dependencies
 
    ```bash
    bun install
    ```
 
-2. Start the app
+3. Start the app
 
    ```bash
    bun start
