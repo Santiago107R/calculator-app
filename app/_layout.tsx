@@ -1,14 +1,21 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Slot } from 'expo-router'
+import { Colors } from '@/constants/theme';
+import { useFonts } from 'expo-font';
+import { Slot } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
+import { View } from 'react-native';
 
 const RootLayout = () => {
-  return (
-    <View>
-      <Text>Header</Text>
+  const [loaded] = useFonts({
+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf')
+  })
 
+  if (!loaded) return null
+
+  return (
+    <View style={{ backgroundColor: Colors.backgraound, flex: 1 }}>
       <Slot />
-      <Text>Footer</Text>
+      <StatusBar style='light' />
     </View>
   )
 }
