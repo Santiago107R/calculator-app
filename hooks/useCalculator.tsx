@@ -65,8 +65,15 @@ export const useCalculator = () => {
         if (temporalNumber.length > 1) {
             return setNumber(currentSign + temporalNumber.slice(0, -1))
         }
-
+        
         setNumber('0')
+
+        if (temporalNumber.length === 1 && lastOperation.current) {
+            const firstFormulaPart = formula.split(' ').at(0)
+            lastOperation.current = null
+            setNumber(`${firstFormulaPart}`)
+        }
+
     }
 
     const setLastNumber = () => {
@@ -127,6 +134,7 @@ export const useCalculator = () => {
 
         const result = calculateSubResult()
         setFormula(`${result}`)
+        setNumber(`${result}`)
 
         lastOperation.current = null
         setPrevNumber('0')
